@@ -17,12 +17,15 @@ function saveMessage(evt) {
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(formElements));
 }
 
-function updateOutput() {
-  if (parsedSettings) {
-    form.elements.email.value = parsedSettings.email || "";
-    form.elements.message.value = parsedSettings.message || "";
+
+if (Object.keys(parsedSettings).length !== 0) {
+    form.elements.email.value = parsedSettings.email;
+    form.elements.message.value = parsedSettings.message;
+  } else {
+    form.elements.email.value = '';
+    form.elements.message.value = '';
   }
-}
+
 
 function formSubmit(evt) {
     evt.preventDefault();
